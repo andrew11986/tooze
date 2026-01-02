@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stalin & The Soviet Economy | Ones and Tooze Ep. 224</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #f2f0e4; /* Paper cream */
+            --text-color: #1a1a1a;
+            --accent-red: #cc2a2a;
+            --accent-black: #000000;
+            --line-height: 1.8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Merriweather', serif;
+            line-height: var(--line-height);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Film Grain Overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            z-index: 9999;
+        }
+
+        /* Progress Bar */
+        #progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: transparent;
+            z-index: 10000;
+        }
+        #progress-bar {
+            height: 100%;
+            background: var(--accent-red);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Geometric Background Elements (Constructivism Style) */
+        .geo-shape {
+            position: fixed;
+            z-index: -1;
+            opacity: 0.15;
+        }
+        .circle {
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            border: 2px solid var(--accent-black);
+            top: 10%;
+            right: -10%;
+        }
+        .rect {
+            width: 50vw;
+            height: 80vh;
+            background-color: var(--accent-red);
+            top: 20%;
+            left: -15%;
+            transform: rotate(-15deg);
+        }
+        .line {
+            width: 120vw;
+            height: 20px;
+            background-color: var(--accent-black);
+            bottom: 10%;
+            left: -10%;
+            transform: rotate(5deg);
+        }
+
+        /* Header / Hero */
+        header {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            border-bottom: 10px solid var(--accent-black);
+        }
+
+        h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 8rem);
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--accent-black);
+            line-height: 0.9;
+            margin-bottom: 1rem;
+            z-index: 2;
+        }
+
+        h1 span {
+            color: var(--accent-red);
+            display: block;
+        }
+
+        .subtitle {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            background: var(--accent-black);
+            color: var(--bg-color);
+            padding: 0.5rem 1rem;
+            transform: rotate(-2deg);
+            z-index: 2;
+        }
+
+        /* Video Container */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            box-shadow: 20px 20px 0px var(--accent-red);
+            margin-bottom: 2rem;
+            border: 4px solid var(--accent-black);
+            z-index: 2;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Content Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            background: rgba(242, 240, 228, 0.9); /* Slight transparency */
+        }
+
+        /* Dialogue Styling */
+        .speaker-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .speaker-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            border-bottom: 3px solid;
+            padding-bottom: 2px;
+        }
+
+        .cameron .speaker-name {
+            color: var(--accent-black);
+            border-color: var(--accent-black);
+        }
+
+        .adam .speaker-name {
+            color: var(--accent-red);
+            border-color: var(--accent-red);
+        }
+
+        .text {
+            font-size: 1.125rem;
+            text-align: justify;
+        }
+
+        /* First letter dropcap for long paragraphs */
+        .adam .text p:first-of-type::first-letter {
+            font-family: 'Oswald', sans-serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 1;
+            padding-right: 10px;
+            padding-top: 5px;
+            color: var(--accent-red);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Visual Separator */
+        hr {
+            border: 0;
+            height: 2px;
+            background: var(--accent-black);
+            margin: 3rem auto;
+            width: 50px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent-black);
+            color: var(--bg-color);
+            text-align: center;
+            padding: 4rem 2rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        footer a {
+            color: var(--accent-red);
+            text-decoration: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .text {
+                font-size: 1rem;
+                text-align: left;
+            }
+            .video-wrapper {
+                box-shadow: 10px 10px 0px var(--accent-red);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Bar -->
+    <div id="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- Background Art -->
+    <div class="geo-shape rect"></div>
+    <div class="geo-shape circle"></div>
+    <div class="geo-shape line"></div>
+
+    <header>
+        <div class="subtitle">Ones and Tooze Ep. 224</div>
+        <h1>Stalin’s <br><span>Transformation</span></h1>
+        
+        <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Ch4ePuk8T9k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        
+        <p style="font-family: 'Oswald'; margin-top: 1rem; text-transform: uppercase; letter-spacing: 1px;">
+            Foreign Policy • Adam Tooze • Cameron Abadi
+        </p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Transcript Start -->
+        
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Hi and welcome to Ones and Tooze, FP’s economics podcast. Every week we take a couple data points, use them to try to explain the world. I'm Cameron Abadi, FP’s deputy editor with you in Berlin, Germany. Joining me as always is FP’s economics columnist and Columbia University professor Adam Tooze, with us this week in New York. Hi, Adam.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Hi, Cam.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>So, this week we are wrapping up our mini-series on Soviet economic thinkers. For anyone who's missed those episodes, you're welcome to scroll back wherever you get your podcasts. You'll find episodes on Vladimir Lenin, Rosa Luxemburg, Leon Trotsky. This week we are ending with the bookend that is Joseph Stalin. A lot to discuss there, obviously. And, you know, as usual, I was expecting to start with the question we usually use when discussing figures in our heterodox economist occasional series, namely: how might Stalin's biography have affected his thinking on economics? But as I was reading about Stalin, sort of another question or a more preliminary question sort of was raised in my mind, which is... I mean, are we entirely correct in describing Stalin here as a thinker at all? By which I wonder whether he is interested in economics in the same ways that the previous thinkers, even in just this series, the theorists like Trotsky and Lenin, that very clearly was an aspect of their lives—thinking theoretically about economics. Was Stalin analogous in that way as opposed to kind of fusing economics with politics in a pragmatic, in a more pragmatic vein? I mean, you know, is this just a category mistake? Is Stalin a heterodox thinker at all?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>There's so much wrapped up in that. I mean, and, you know, so much is wrapped up in clichés around Stalin the man and who he was. Like he was obviously somebody who could be incredibly cruel and vindictive. I mean, I think he's really quite unlike somebody like Hitler that he's often compared to. Stalin had a truly cold-blooded element of his character, whereas Hitler was a much more sentimental figure, I think. Stalin was not an economist at all. Unlike, you know, Lenin or Luxemburg in particular, who really struggled with the phenomenon of academic economics—Luxemburg particularly so, she had a PhD—Stalin was somebody who had to think about the economy and did so in really rather a structured way, but is not a theorist in that sense. And he was mocked within the Bolshevik party at people's cost as somebody who really couldn't hang with the high level of theoretical activity within the party.</p>
+                <p>So at that level: not an economist, you know, a dangerous man, not a thinker in the mode of a Trotsky or a Lenin or a Luxemburg. But I mean, that sets the bar spectacularly high. You know, I mean, Stalin is also a measure of just how far we have fallen. I mean, Stalin the thug, the administrator, the ghost, the pale administrator—his intellectual output compared to any contemporary political figure is just stupendous and awe-inspiring. I mean, he read hundreds of pages every day, and we know he actually read because he annotated. I mean, the annotations are kind of thuggish, but his favorite topic of conversation when he wasn't making death lists and, you know, in other words engaged in party infighting, was books that he was reading. I mean, he had a personal collection of 20,000. So he's a... you know, thinking and writing was essentially part of his metabolism as a human being, as a political actor.</p>
+                <p>So, yes, not Lenin, Luxemburg, Trotsky—not the iconic intellectual radicals and the truly original thinkers in theory—but a different kind of politician, political animal from what we are used to. And swimming... I mean, he's kind of... in this AI age, I can't help thinking of Stalin, he's a little bit algorithmic. You know, he spends a lot of time sucking stuff up and then synthesizing it and figuring out the main currents to swim within. But having said all of that, and the reason why he matters and why his thought ends up mattering, is that the Bolshevik party, the Communist Party in the '20s is in a state of flux. And we'll speak more about the divisions within the party in a minute. But the truly original thing that comes out with Stalin and his faction—but he absolutely articulates what the project is here—and we in retrospect, it seems so conventional what he's doing that it's easy to underestimate how radical that it is.</p>
+                <p>But, you know, if Lenin, Trotsky, Luxemburg take Marxism out of the 19th century and put it... the mid-19th century, the age of Queen Victoria and the Great Exhibition and the 1848 revolution where Marx and Engels come from... they're born in, you know, the aftermath of Hegel in the early 1800s in Germany. Lenin, Luxemburg, Trotsky turn Marxism into a 20th-century global politics. And what Stalin does in the Soviet Union in the '20s and '30s is turn the ideology of the Communist Party into the hard DNA of a national developmentalism that now seems familiar. And you could say is anticipated by Hamilton and List and these nationalist thinkers of the 19th century, but no one had done it the way that the Soviet Union does it. And with the radical social transformative revolutionary ambition.</p>
+                <p>I mean, Stalin really is the bona fide, one has to say it, he's the theoretician of the second phase of the Soviet Revolution. And the only people on a par with him are those coming along in the peasant revolutionary projects, the Mao Zedongs and the Ho Chi Minhs of East Asia and Southeast Asia. They will, if you like, add a fourth-generation Marxist revolutionary project. But this vision of utter economic and social transformation in one gigantic country—we're going to talk about socialism in one country in a minute—but and the stupendous rates of change, the growth rates which even on the knockdown, Western-revised, pessimistic figures imply growth rates of 5-6% per annum across large parts of the Soviet economy. The moving of tens of millions of people, more or less forced, under more or less coercive conditions over the space of less than a generation—10 to 15 years—from the countryside to the city to really stamp a new society out of the ground. We've seen that replicated again and again and again, even in the West, in Western Europe in the '50s and '60s or now in East Asia and China, you know, most spectacularly in the last generation. But the Soviet Union is the archetype of that. This is the first time this has ever been done. And it wasn't on the radar of, you know, Marx and Engels in the 19th century. It wasn't even on the radar of a Trotsky or a Lenin or a Luxemburg 10 years before, 10-15 years before. So this is the kind of extreme radicalism of a Stalin, which puts him I think, you know, alongside the Dengs and the Xi Jinpings of the present moment who are, you know, not cultural radicals, not rethinking our relationship to art and culture the way that Trotsky was doing or exploding our understanding of the world in the way Lenin and Luxemburg did. But in terms of what they are going to do with power and how it's going to materially transform the world are setting just radically new standards. And Stalin is the first figure that does this. So he really does deserve... I mean "heterodox" doesn't even come remotely close to describing what this kind of vision of economic change is. Because it's, you know, it's the revolution from the top down or by way of the party and its coercive apparatus carried to everywhere within a giant society in the space of less than a generation.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>So let's get into some of the fractional differences at the time that Stalin was taking power. We talked pretty expansively in our last episode about Leon Trotsky and his concept of "permanent revolution," what that means, how he theorized that idea and its necessity. Stalin had a concept that he explicitly kind of opposed to this, as if I understand correctly, namely "socialism in one country" that you were just describing or mentioning. So, yeah, what exactly was he rejecting in Trotsky's thought and what was he opposing to it? I mean, it seems to me some Soviet idea... idea of Soviet economic autarky. Is that basically what he was providing in opposition to Trotsky's concept?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>I mean, it's really good to be doing this in a series because the obvious juxtaposition is the permanent revolution concept, that incredibly radical idea that I was trying to grasp in the Trotsky episode. You know, and that extraordinary phrase of Trotsky's that revolution is "camp life," like a permanent, itinerant, homeless, provisional kind of existence. And I think the best way to grasp the shock—and it really is a shock—and the radicalism of Stalin's position is to say "No" to that. And Isaac Deutscher's brilliant biography of Stalin—he's also of course the great biographer of Trotsky—describes the kind of mood within the Soviet Union in the 1920s, which is a sort of combination of pride, exhaustion, complacency. You know, so, you know, they make the revolution in '17, they fight their way through the civil war, they go through the horror of the civil war and the famine that followed. They stabilize. Then Lenin dies. And the question is: what's next? And the permanent revolution gang, the Trotskys of this world, are saying: relentless more struggle forever! You know, comrades, we've only just begun, this is the beginning! And furthermore, nothing that we're doing here makes any sense or is going to be stable or can count for the long run unless we make revolution in the advanced world and we start talking about revolution in Asia as well. Like nothing... nothing here can be taken for granted. It's just this relentless, like surging push.</p>
+                <p>And Stalin's position is: Hey, like, come on. Like, we control one-sixth of the planet. There's 160-odd million people here. We have done something. We have stabilized. Stop telling me that it's like true that we have to constantly stir the world up to, you know, to preserve our position here. No, we can preserve our position in the Soviet Union, we can defend the Soviet Union. This is also tied to a rather sanguine estimation they have of the stability of the West. So they believe that because the West is stabilizing, they're going to be able to do deals with the West that will mean that they don't have to constantly worry about counter-revolutionary, you know, sort of, you know, Iran-Contra style mobilizations of Western resources to unseat the Bolsheviks in power.</p>
+                <p>And so what Stalin's proposition is, is—and again we have to kind of think historically here—like, Russians had learned Marxism. Lenin, Luxemburg, Trotsky had all preached relentlessly to the point of cliché that revolution had to be global. And here's someone coming along saying: No, actually we can just do it here. You know, and this is a really powerful thing that we've created. And it's ours and we made it. And nowhere else has it happened. And like, aren't we missing the obvious point that we should do it here? Now, does it mean autarky? Autarky is this idea of self-sufficiency economically that was thrown into the debate in the time in the 1920s and '30s because the fascists are quite into autarky, they speak about it a lot anyway. It emphatically doesn't. What it does mean, though, is that we're not going to allow the Soviet economy to become sucked willy-nilly into global international trade and financial relationships. We're not going to do principled opening up and reform like Deng Xiaoping will do in China in the '80s, right? We're not going to open the floodgates to external influence. We're going to manage this.</p>
+                <p>And what they end up doing is building a extraordinarily powerful bilateral relationship with the Weimar Republic, with Germany, with the new German state created after the revolution there, which was of course the revolution of 1918-1919, the one which claims the life of Rosa Luxemburg and is widely seen of course as the great disappointment of revolutionary politics in the '20s. Because if revolution wasn't going to be in Britain—and after the General Strike's failure in '26, it's not going to be in Britain—and it's not going to be in Germany either, and you're not going to be able to get to Germany because Trotsky's Red Army was stopped in Poland in 1920... like, the idea that—and the Stalinists openly advocate this as do others in the Soviet system at the time—that the solution for the Soviet Union's development as "socialism in one country" could be an intense bilateral deal with the Weimar Republic is to like compound the heresies. And the idea there is straightforward and it's a division of labor idea. In other words, the Soviet Union will develop agriculture, raw materials, oil, and exchange that for the uniquely prized and highly sophisticated engineering products of German industry. And this is hugely significant for both sides. The Soviet Union is by far the largest market for German mechanical engineering over the late '20s into the early 1930s. It's underpinned by a German export credit, so the German government is underpinning this trade. And a very large share of Russian grain exports and other raw material exports go to Germany in exchange. So it's more like a kind of balanced trade or managed trade kind of vision than autarky. And it's hugely politically sensitive because the Soviets keep on exporting to Germany, exporting grain to Germany even as their own agricultural system is thrown into absolute crisis by collectivization. It's not true that, you know, Russian peasants—Ukrainian peasants in particular—starve en masse because of exports to Germany, but at the margin they are... the Soviet regime is giving high priority to whatever they can earn... to hard currency earning exports. And in particular what they really want is mechanical engineering equipment for industrialization in exchange.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Okay, so let's take a closer look then at one aspect of this policy that falls under this general strategy, namely the collectivization drive that Stalin pursued in the late '20s and early '30s that you're sort of alluding to here. And I'm curious about what the economic logic of this collectivization policy really was. I mean, this was a bid to consolidate private farms into large state-controlled collectives. And it seemed to have all sorts of failures in its aftermath, or at least involve all sorts of brutal repression and, you know, famines, millions of deaths. It's uncontroversial to say. But I'm curious whether that is not entirely an accident. In other words, did Stalin's policy, as part of which he declared a kind of "liquidation of the kulaks as a class"—did it always involve a kind of exterminationist logic? That is to say, did Stalin have an understanding of economic development along the lines that you've been describing that required destruction of parts of the social structure? Even if it didn't maybe necessarily require, did he just sort of inherently accept potentially unlimited human costs for political and economic goals?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>So I'm sure we'll come back to the question of violence because it runs through this whole series of conversations, and one shouldn't underestimate the element of violence in the thinking of Lenin and Trotsky in particular. Because, you know, there's an old leftist kind of move of saying, you know, the Russian experiment was betrayed by Stalin and really the Bolshevik Revolution was more benign, more democratic, and it's really when the Russian Stalin—or the Georgian-Russian Stalin—takes over that the barbarism of Russia swamps the emancipatory logic of Bolshevism. Eric Hobsbawm for instance is sort of borderline guilty of this. We shouldn't accept those kind of apologetics.</p>
+                <p>But we should also understand the collectivization project as part of a long-standing conversation within global leftist thought about where the peasantry fit in. And we saw how with Lenin in particular, right, he develops this theory of an alliance between the Russian peasantry—not the whole of the peasantry, because he believes it's becoming capitalist, and that means you can split the peasants into poor peasants, working-class peasants effectively (though they're not workers in the sense they would be in a factory, but nevertheless they're disadvantaged and exploited and oppressed by rich peasants). And so the idea is you split the countryside and ally the poor peasants with the working class, and that's your revolutionary agent.</p>
+                <p>From a more managerial, economic point of view, the other way of looking at the agrarian question—you see this in people like Kautsky—is: what about capitalism in the countryside? What kind of a future do we see for it? And the answer in almost all of this thinking is larger scale. You know, larger scale farms. So if they look to North America, you know, the ultimate settler-colonial kind of paradise of large-scale farming, you see not necessarily higher productivity per acre or hectare, but you see much higher productivity per farmer in the US because there's so much land for every farmer. And the problem of European and much of Asian agriculture is there's just too many people in the farms. And so from the early 1900s onwards, as they seriously begin to think about world revolution and what it would look like, they start thinking about modernizing agriculture by making the farm units bigger.</p>
+                <p>And then you need to add a couple more elements to this story, which are: A) the first effect of the Russian Revolution—you know, the great... what it delivered for most Russians, 80% plus of whom were agrarian in 1917—is that they basically took the land from the landowners. They expelled, in often cases killed, the aristocratic and gentry landlords. And in a, you know, grassroots, bottom-up collectivization... well, they didn't collectivize, sorry, they did a land reform, they did a land redistribution. And so the result of that is that the Soviet Union goes from having 16 million farms to 25 to 26 million farms by the early 1920s. And that also, of course, is a power question. And this lurks at the background of your question, Cam. So it's all very well to have like a revolutionary project that says we're going to ally ourselves with the poorer peasants. But if you actually give more peasants more land, then fewer of them are poorer, more of them are now actually land-holding. And then a kind of power struggle develops that is a struggle of land-owning peasants against radical politicians.</p>
+                <p>But it's also an economic struggle between the countryside which sells agricultural output—and it sells it either to domestic urban markets (the farmers don't need it themselves) or you export it. And as their farms get smaller and smaller, less and less of the Russian farmers are interested in exporting. And the question is more and more salient: do they just retreat into self-sufficiency and feed themselves or their local village, or are they still willing to sell grain to the city?</p>
+                <p>So you can see all of these layers compounding themselves in this problem. And the crisis of the early 1920s that shook the Bolshevik regime and shapes all of these people's biographies and politics was one of civil war, was one of outside intervention. But it was also reasonably enough understood as an economic meltdown in which the countryside, newly provisioned with all of the land of the aristocrats, decided basically that it was less interested in doing business with the cities. Especially if you're in a world of hyperinflation where money's not worth anything. And you take your valuable grain and go sell it for some fake paper rubles and you can't buy anything for it because the industry, the cities are melting down because there's a revolution going on and civil war and there's nothing to buy. And so you end up with a famine in the cities, which is where the revolution is supposed to be coming out of. You begin to see like how congested this problem is.</p>
+                <p>And the solution of New Economic Policy adopted from '21 onwards was to say: Okay, we need to back off. And we need to go back to first principles. How do we get people in the countryside to sell things to the city? We need to give them a currency that they can do this in. So they actually create a gold-backed currency for the Soviet Union. And we need to have markets. And then we need to move from forced requisitioning—where Trotsky and Stalin and their merry men go out into the countryside and basically just seize grain—and we need to move to a money-based taxation system or some controlled marketing system where farmers are required to deliver so-and-such quantity for a certain price.</p>
+                <p>And this is the stabilization of the '20s. And this is what all of the politics after Lenin's death are about. The two big questions are foreign policy (socialism in one country) and the other question is what to do with the countryside, where the vast majority of people live, newly empowered by the revolution you've made. And in a sense, you're doing your radical cultural urban revolution in the cities—all of the culture everyone likes, you go to the MoMA in New York and you see all this '20s Soviet art, that's all being done in the cities—at a time when in the countryside the famous Kulaks, the upper-class peasants, are having, you know, a market economy ball thanks to the revolution that Lenin, Trotsky, Stalin and the rest all made, right? And so this is this... how do we escape from this?</p>
+                <p>And this becomes more and more pressing as you look at the grain market and go: Oh damn, we're not getting enough grain as we would like to force the development of the socialist bit of Russian society. And secondly, the longer we do this, the more those peasants are going to turn into Western-style peasants, and then they're going to be conservative and they'll be voting against the revolution. And what on earth have we done?</p>
+                <p>And so back and forth over the '20s over this question of setting the prices so as to get the goods from the countryside to the city. Prioritizing industry—do you extract more resource from the countryside so as to feed industrialization? Is the future of Russian society actually in the cities? Are you going to make this big break? Can you thereby increase the productivity of farms, release the labor, release the food, escape this impasse?</p>
+                <p>And there is this huge faction struggle basically between more or less radical politics on this. Bukharin is on one side, Trotsky and the left wing of the party on the other side. Stalin holds this whole thing at arm's length. And then in '28 makes this dramatic move towards: we're going to prioritize massive industrialization. And not just collectivization, but forced collectivization of the entire countryside on a timescale that's going to be defined by a five-year plan. And that is the... that is the break. Now, that's going to be violent. It's... everyone understands it's violent. Everyone understands that the logic here is, in their own terms, one of class war. They devoutly believe that there is a Kulak class out there that opposes the revolution that is going to try and extract concessions from the revolution. And when they announce this policy, a large part of the peasant population in Russia is: A) because still religiously devout, thinking this is maybe the apocalypse and the end of the world because how can this be? And B) responds by various types of sabotage and protest—obviously hyped up in the Bolshevik reporting on this, but clearly real because we can see it in the statistics. And one thing a peasant does if they think the end of the world's coming and they're about to have all of their resources stripped away is kill their draft animals and eat them. But when you do that, you of course dramatically undermine the productivity of the agricultural system.</p>
+                <p>And so then you end up in what is really a resumption of the civil war, but this time not against the political enemies of Bolshevism, the Whites as opposed to the Reds, but a flat-out socio-economic war where you divide the vast bulk of Russian society and Soviet society—and I shouldn't keep saying Russian because really this struggle is intense in Central Asia, it's incredibly intense in Ukraine, where for Ukraine this becomes as you were asking like truly the national... this is the Holodomor, the Ukraine's Holocaust. And it's quite clear that the Soviet leadership from the top down... You know, if you ask me, did they set out to have millions of people starve to death deliberately? I don't think the reasonable answer is yes. If you ask, were they willing to push what they understood to be a political struggle to the limit and absolutely countenance the deaths of millions of people if necessary? And exacerbate that by dekulakization, which was the politically driven commissars going into villages and singling out rich landowners and saying "Right, off to the Gulag," in the hundreds of thousands and ultimately the millions... Absolutely.</p>
+                <p>So, you know, they would have liked this to go more smoothly. And in the face of opposition, what they did was ramp up the coercion. And is this a project of state-building and consolidation? Absolutely it is. Do they want to consolidate the Soviet Union's grip and the largely Russian-speaking party's grip over Ukraine? Of course they do. And the same in Central Asia. So this is a really violent process of state building.</p>
+                <p>And it... you know, from the regime's point of view, it works. I mean, and what I mean by that is not that it necessarily produces huge leaps forward in productivity initially. Of course it doesn't. It leads to chaos, mass death, disintegration. But by the mid-30s, the relationship between the countryside and the cities is restored. The productivity levels are acceptable. And crucially, when the big test of the Soviet regime comes—because you have to understand the Soviet regime as being shaped by the prospect of war—they are able, even during World War II, under the most dramatic pressure of the German invasion and the most savage land war that the world's ever seen, they're still able to maintain their control of the countryside such that they're able to go on feeding Russia's cities—the Soviet Union's cities. At this point it largely is Russia because the Germans capture so much of the non-Russian bit of the western Soviet Union. So they are actually... the political logic—it isn't an economic logic first and foremost—but if the lesson of the first revolution of 1917 was that if you don't control this relationship between city and countryside, you will face upheaval because the cities will starve, which is what brought down the Tsar... in the '40s, what the Stalinist regime demonstrates is that collectivization—which really imposed for the first time, again never done before anywhere in the world, ever in the long history of settled civilization since the beginning of the Neolithic—had a state imposed power on peasants in the way that the Soviet regime imposed power on the peasantry from the collectivization drive onwards. And that is the essential metabolic core of the Soviet regime's survival and success in World War II.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Yeah, no, that I... it genuinely seems like a novel approach to economic issues. And one that, you know...</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>And ultra-violent. I mean, really, you know, let's be clear. There's no... I mean it's... it understands... because this was the great threshold of power, right? No... since there have been peasants and landlords, this has been the central question: can you assert power, you know, into the territory, really over the entire zone of the territory? And they have commissars in every village, right? You know, literally every village. There's a tractor station, there's political party control. This is unprecedented.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Yeah, I mean just the preliminary relationship to the underlying society, to just see it as sort of malleable or something that one not as a constraint that one needs to work with, but rather something that one can kind of treat as...</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>More like a battle. There is opposition, right? So it's not infinitely malleable. You can't just sit on the whiteboard and just go b-b-b-b-b. But you can... the great Soviet historian Moshe Lewin, himself a survivor, a Jewish survivor of World War II in the Soviet Union, wrote this amazing... he had this phrase "quicksand society." So a society that has been kind of rendered, you know, viscously fluid, like sand.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>So as you mentioned, this collectivization was part of a broader industrialization drive that Stalin pursued, you know, with an emphasis in parallel to this on building heavy industry in the Soviet Union, especially coal, steel, electricity industries. This also involved immense human suffering, but obviously led to a big growth in industrial capacity. And this all came in the context of, you know, this impending World War II that you were also mentioning. And I'm curious: was this industrialization drive, you know, historically looking back, the only way of ensuring the Soviet Union's survival in this context? And then at the same time, in a longer context, did it also introduce—this industrialization drive—permanent distortions to the Soviet economy that in the longer term doomed it to failure, which we've obviously also historically seen?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Yeah, I mean this is the follow-on question, right? And then you could call it the test of 1941. Like the Soviet Union's ability to withstand the Nazi invasion, the largest military operation in history, the German invasion of the summer of '41, and then this epic war that follows, the likes of which we've never experienced in the West. You know, could... that is the legacy, I mean, of the Soviet project. And there's no denying that, I think. I mean, Stalin famously in this speech in 1931 said: "We're 50 to 100 years behind the advanced countries. We must make good this distance in 10 years. Either we do it, or they crush us." Like, he sees this coming. I mean, his judgment on Nazi Germany in '41 is notoriously terrible. He refuses to believe the Germans will invade. But the general logic of the Soviet project—and this is also obviously totally different language from what you'll hear from a Lenin or a Trotsky or a Luxemburg. That quote like marks the difference. Like the benchmarking against the advanced economies, the idea that you can catch up with them, the military dimension of the entire logic is distinctive and new. And it's a lesson of World War I. It's a lesson of... in some senses, again, the Bolsheviks of course had been fixated on Germany—everyone had been—the Japanese too, on Imperial Germany and its triumphs of modernity and industrialism. And it loses! It loses to the world empires, France and Britain, and the United States. And that's what a revolutionary transformative project is up against. And the scale of the Soviet project, as the scale of the Nazi project, are backhanded testimony to their realization: "Oh my god, if you're going to do global power politics in the 20th century, the stakes are very, very high. You're going to have to go very big."</p>
+                <p>And so the industrialization drive is like nothing anyone's seen before. Like, you know, steel production quadruples between '28 and '37. And now we kind of shrug and go, "Well, look at China." But China is the follow-on, right? Or look at what happened in Italy or Germany in the Trente Glorieuses, in the miracle years of the '50s and '60s. Yes, those are follows-on. This is the first time that's ever happened. That steel production has multiplied like that. And engineers around the world, technicians, scramble and just stare in awe. And the Soviets are pulling in expertise from Germany, from the United States, from Britain to figure out how you do this as quickly as you can. And you know, sector after sector it's the same. They go from producing, you know, a couple of thousand horsepower's worth of tractors in the late 1920s to being one of the largest tractor producers in the world. Not surprisingly then they also become the largest, you know, the most successful tank producer during World War II because it's those same production lines that had done or learned how to make tractors that suddenly then become tank producers.</p>
+                <p>I mean, the counterfactual question hangs over Soviet history so heavily. It's really like a permanent shadow. And I think rather than thinking of the answers that people give as definitive—"Well, yes, clearly they could have gone the other way." There's a big Russian team of expat Russian economists that did a National Bureau of Economic Research paper about 10 years ago—liberal critics of Putin, who also then are liberal critics of Stalinism—and insist that the Soviet regime could simply have continued the economic growth pattern of either the New Economic Policy of the '20s or Tsarism of the period before 1914 and would have ended up somewhere very similar. Okay, fine. They basically use a neoclassical growth model, project some productivity growth rates in there, and they say, "Okay, this would have been possible."</p>
+                <p>Others take the more jaundiced view of saying: Look around the world. How many states have leaped from the levels of poverty that were prevalent in Russia in the late 19th century and the levels of agrarian concentration that were visible there to being heavy-hitting global industrial powers able to go toe-to-toe with Nazi Germany and then the United States in the Cold War? How many? And the answer is one: Japan. So basically, if you're actually looking not at radically theoretical models of growth like the neoclassical exercises, but at robust historical alternatives—and obviously Japan's level of development by the late 19th century was in many respects far ahead of those of Russia—when you look at the large... you know, why would you, if you were the Bolsheviks, want to take the risk that hands-on, directive, violent mechanisms of industrialization were not the way to go? Like, why? It's a sort of strong hypotheticalism there which is too much, I think.</p>
+                <p>Your question about the longer run impacts of this again hang over this whole story. I mean, there are three different contending points of view here, of which I'm really more sympathetic to the latter two. The standard view is: Like, of course this was doomed to fail. It was coercive, it was violent, it didn't provide the right incentives, there was no private property. How would you expect this kind of system to work? All of which is true, except that it was true all along! And for decades this was one of the most high-performing industrialization systems anywhere in the world, ever. And not just in the Soviet Union, but in Bulgaria, in Romania, in Hungary, in East Germany as well. All of those societies experience real industrial urban modernization over the period of Soviet rule there. Not permanently, forever, not over 50 to 60 to 70 years because those regimes implode in the '80s. But for a period, it works. So that kind of totally generic explanation won't work very well.</p>
+                <p>So I think the smart explanations, smart answers to your question about whether it was predestined to fail are some sort of combination of structure and agency. There was a mode of industrialism and industrialization that comes to the fore in the mid-20th century that, as it were, is quite affine, is quite well suited to hard-nosed, brutal at times industrialization policy. If the nuts and bolts of industrialization are infrastructure, steel, coal, electrification, urbanization, mass education, women's liberation, hospitals—authoritarian regimes can do all of that really quite effectively and have done it consistently all over the world. North Korea now can do things North Korea couldn't do in the 1950s, right? So... and then the question is: can you keep that up when on the one hand the political system becomes degenerate—you don't have the right logics of selection for elites on the one hand—and on the other hand the technological game changes?</p>
+                <p>And I think, you know, you could see the Soviet Union as through the 1960s as a rough and ready poor country version of a kind of industrialism that we would have seen everywhere from Turin in Italy to Bochum in Germany to Sheffield in England to Detroit in the United States. And everywhere it wasn't what we know nowadays. I mean, I'm old enough to remember. It was a messy, rough, quite poor, what we might now think of as kind of emerging market industrialism. And all of those systems go into crisis in the '70s. And the question really is who can modify and what are the costs and benefits and who pays the price of the adjustment that follows. And I think to my mind that's the most effective way of thinking about this. That Stalinism was kind of fortunate in the sweet spot of the industrial arc that it fell into. And everyone was hit by crisis from the '60s onwards—also of course the global re-division of labor, Japan emerging and so on. And the Soviet system proved—I mean everyone paid a price, or rather working-class people in many places paid an incredibly heavy price—and the Soviet system proved relatively less adaptable in the face of that. That's something maybe we should come back to in kind of an economics of Gorbachev kind of exercise.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Well, yeah, that is a good idea for somewhere down the line. But I do also want to ask about the economics of another aspect of Stalinism that is inseparably associated with the Stalinist era, namely the Stalinist Terror. I mean, this is a... depending on how you define it, it spans anywhere from a number of years to a number of decades during Stalin's reign in power. And yeah, this was basically a policy against suspected dissenters in the party that led to millions of arrests and deaths, it's estimated. And again, the question of the economics or whether there's an economic aspect to this policy... I mean, were purges a way of explaining some of the economic failures that Stalinism, you know, involved and encountered of the sort that we've been describing? Or is it maybe also better understood as a way of centralizing economic power by eliminating potential dissenters and just introducing this kind of fear and then essentially making security forces who are now overseeing arrests and overseeing labor indirectly a major economic power and player in the Soviet Union? So, yeah, is one of these a way of economically understanding Stalinist Terror?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Yeah, I mean there are... it's worth being kind of clear about this. There are like five or six great phases of mass death in the Soviet Union's early history. The first is the political violence of the Revolution and the Civil War, which begins in earnest and it's a really no-holds-barred civil war that rumbles between '18 and '21. The very first phase of the Russian Revolution is relatively benign—they abolished the death penalty, but that's all revised after '18. Then there's the Famine, which kills millions of people—single digit low, 1-2 [million]—in '21-'22. And after that the regime stabilizes.</p>
+                <p>And the next great wave of violence is what we were talking about a minute ago with collectivization, which claims the lives of millions of people. And involves also the building out of a giant Gulag system because the dekulakization campaign, which is class war by means of police coercion, involves the forced movement of giant populations and their incarceration in this expanding camp system.</p>
+                <p>And then there is what's known as the Great Purge, which is a discrete political event and it has a kind of fever curve of delirious political radicalism. This is the sort of thing that you will have seen films about where, you know, people are in their apartment at night in Moscow. Often it's quite a modern apartment with a telephone. And then you hear the sound of a van outside and the van parks. Right? And all of that is very significant of like high Stalinism, because you're in an apartment, you're in a city and there's a van—like none of which would have been true 20 years before. And then the question is whose door are they going to knock on? And this is the predecessor of the KGB. And it's an internal, politically motivated and branded campaign. And it starts with Kamenev and Zinoviev, a coalition that are accused of Trotskyism. And those are, you know, old fractional... they're part of the triumvirate that took power after Lenin's death. So that big trial is in August '36.</p>
+                <p>And then it rumbles through in this extraordinary escalation of targeted roundups by the police. Some of them extremely politically motivated, a lot of it just the police are given quotas and told to arrest this number of people in this district. And that continues through to the spring of '38 with the trial of Bukharin, who is the economist advocate of New Economic Policy and the deal with the peasants, who Stalin had at times allied himself with and had then broken with and then survived for 10 years on the fringes of the Bolshevik party but then was dragged in. And these are the show trials, right, where people have seen the footage of people being forced to make patently untrue declarations. This is what Arthur Koestler writes about in his novels or Merleau-Ponty theorizes about. Quite different from dekulakization earlier on, though there is an anti-kulak element in this campaign. Then there's the mass death of the war period. And then the aftermath, late Stalinism, there's another wave of purges. But they're not on the same scale as this phase.</p>
+                <p>Because we think a million and a half people were maybe arrested and 750,000 were killed. And these are back-of-the-head execution style killings in very, very many cases. Disappear down a cellar in the Lubyanka and somebody steps into the room behind you and you're dead. So this is like... this is the High Stalinist [Terror]. And it's hard to explain. You know, it begs the question, it's truly puzzling: why would you do this? Like Arthur Koestler writes this extraordinary existential novel, it has posed questions for existential philosophy ever since. Like, how could this happen? This was also the moment where Trotsky mobilizes in exile and, you know, there's the Dewey Commission to investigate whether any of the allegations against Trotsky can possibly be true. So the questions of truth are engaged.</p>
+                <p>And motivation. Like why is Stalin doing this? Because it's hitting the core of the party. Not just by any means—they go after Germans and Kulaks, but people they've labeled as ex-kulaks because there aren't any kulaks left after collectivization. So it's really... it's always posed this question of rationality. And one possible plausible set of answers—though one has to say that they are all always rather contentious and revisionist—was to say that economic crisis was part of the driver. Since this starts happening in '36, we're into the Five-Year Plan system, there is a hiccup in grain procurement in '36. Is it possible that this helped trigger the round of accusations? It hasn't really stood the test of I think close examination of what's going on inside the Politburo. It seems rather the reverse. That '36 is generally an incredibly tense period in world politics because: Popular Front, Spanish Civil War... It's the moment when the Nazis go to the Four Year Plan regime. Everyone can see war coming. Japan is starting war with China. Like, you know, we're really on the cusp... Italy has invaded Abyssinia... Like the things are heating up.</p>
+                <p>And it seems that Stalin actually had the reverse view, which is that the Five-Year Plan system was going so well that people were bound to try and find ways to derail the success of the Soviet experiment. So success made him more paranoid. And then once you're in that situation, everything bad that happens becomes something you can explain by way of "wrecking"—this is the phrase that's used, "wrecking," which is a form of sabotage by people inside the system. And so, you know, a plan fulfillment drive of course generates endless disappointments of moments where people can't get plans done, and then it's very easy to wield the baton of an accusation of sabotage. So we think that's how that ran.</p>
+                <p>But it was devastating. It took out something like, you know, 75% of the leadership of the Soviet railway system. It famously took out a large slice of the command structure and some of the most innovative military thinkers not just in the Soviet Union but anywhere in the world—all of the Soviet Union's tank theorists. Like, it's really a devastating kind of autophagy. Like it consumes itself. And I think it shouldn't be broken down into a kind of simple economic story. Does it have an economic impact? It absolutely does. Like one of the things that this successive waves of violence do is churn up Soviet society, move tens of millions of people from the countryside to the cities, and then in these purges they eliminate cadre after cadre after cadre. So Sheila Fitzpatrick, the brilliantly iconoclastic Australian historian of the Soviet Union, you know, wrote this amazing book about social mobility under Stalinism. Because as many people as they're killing, the vast majority survive. And as you eliminate these layers, it creates these possibilities of upward movement. And the consequence of that is that, a bit like in China today, people can't separate their biographies from the regime, right? Who you are is an effect of this violent rearrangement of the world that you yourself are both suffering but also in various ways benefiting from. So there are these surreal scenes of classrooms full of hungry children in the Soviet countryside learning to read. Like, you know, there's real famine and on the other hand also a real literacy drive at the same time. And in the cities the same: whole cadres of young engineers that are promoted to senior leadership because their bosses have all been purged. And it's those then that are crucial we think to the survival and robustness and motivation of the regime and its economy during World War II.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>So I think it seems only appropriate to end this discussion by returning to the question that was sort of raised at the outset and sort of been a theme throughout this discussion, but also in the previous episodes as you alluded to, namely the relationship between economics and violence in Stalinism in particular. And I'm curious whether this link that we've been talking about and describing, is it a contingent connection or a necessary one? And by, you know, by that I mean... you know, Stalinism clearly, if it meant anything in economics, it meant a turn to a kind of command economics. And does this violence that we've been talking about sort of just express what is implicit in command economics? Namely some kind of coercive nature that the state is making a claim to. And yeah, violence is a kind of just, you know, inseparable from that. Or is this connection not even explicit in Stalinism? I mean, I know that Stalin wrote a work in 1952, "Economic Problems of Socialism in the USSR." I mean, does he acknowledge violence as sort of central to economics in that text or does he avoid that? And is that itself then telling about the relationship between economics and violence more generally?</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>No, I mean I think this is also part of the impatience of much of the radical left with Stalin, because he's such a petty bourgeois figure at some level. Like "socialism in one country"—the promise is actually: we can do it here, we're self-sufficient, we can make this happen here. There's a sort of, you know, desire for stability. And they pass a constitution in the middle of all of the upheaval of the 1930s, which is, you know, the Soviet Constitution, which is a blueprint for a better society. The Western fellow travelers—including the Webbs, the Fabians—that went to the Soviet Union and saw this world, came back thinking: Here's a better civilization. Keynes went, for heaven's sake. My grandparents were British elites who were completely complicit in this. And what they were seeing is one face, one genuine face of the Soviet regime.</p>
+                <p>What it can't, I think... what that doesn't account for, and where one has to say that it's essentially bad faith, is A) the violence that got you there. Which of course Stalin in that phase was an absolute exponent of—revolutionary violence. I mean Stalingrad was named Stalin for the extremely coercive mechanisms that he used to feed a beleaguered city during the civil war. But more fundamentally, the connection between ultra-rapid economic growth as such and violence is the one I think we have to insist on, right? So... and this isn't a kind of what-aboutism. It's not to say, "Oh well, you know, Stalinism was violent, but what about capitalism?" The point is to say that all economic growth is spectacularly destructive of old ways of life and coercive to the extent that it's not just the product of people's desires and the kind of happy Edinburgh 18th-century story of the development of commercial society through the unfettering of more and more abundance, right? Everywhere that we've ever seen economic development has had a coercive element. Marxism from the mid-19th century on is the great doctrine, the theory which exposes that violence. That's the entire, you know, logic of Marxism.</p>
+                <p>And faced with the oppressive force of imperialism, the threat of intervention, the resistance of class opponents of the Bolshevik regime, the Bolsheviks wholeheartedly embrace that. I mean, and not Stalin in the first instance. I mean, Lenin after all, like in calling an end to World War I, is not arguing for peace, he's arguing for civil war! Because the difference between an anti-imperialist war is meaningless; a civil war is meaningful. Like, you know, inverting the hierarchy of most political theory which says the ultimate nightmare is civil war, external war is legitimate. Like for Lenin it's the other way around, right? You make peace internationally so as to be able to prosecute class war and civil war at home. And Trotsky was the commander of that civil war. You know, personally overseeing punishment expeditions, executions, the whole works.</p>
+                <p>So they understand... I mean to even call it like a dirty hands problem is... they don't even think of it that way, right? This is organic to the project of power. And what Stalin does is to really move that from an external, instrumental "we need to coerce peasants to force them to give us grain" to "we need to break, you know, the bourgeoisie so as to free up the revolutionary project." What Stalin, as you said earlier on, like what Stalin is authentically original in really seeing the possibility of, is this radically coercive remaking of an entire society.</p>
+                <p>And it... you know, this goes... Hayek and so on will say, well, command economies are bound to be violent because what they do is they lead to the intrusion of government into private choice. That's true, absolutely, all of that. But this is so much more comprehensive and so much more fundamental.</p>
+                <p>So out the other side, however, there's always this promise that when we've done this... And this is the sort of... this is where Stalin is so different from Trotsky. And Trotsky will say, "Yes, you live in that camp for the foreseeable future cause permanent revolution." What Stalin is doing is saying, "We fight our way through, and then we'll end up in the Stalinallee in East Berlin with the beautiful rococo buildings and everyone will be settling down to live in their, you know, nicely furnished worker's apartment and stability will be ensured." And that ultimately is the kind of... the promise of Stalinism which makes it more conventional than the radical political theory of a Lenin or a Trotsky.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Yeah, I mean for me this does raise the usefulness of a Freudian concept, namely of sublimation. I mean, like that... that if violence is maybe... is plausibly, you know, inseparable from social and economic life, that may be the case, but it still seems to me then sometimes useful not to be so self-conscious about it and...</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Oh yeah. No, no, no. I mean it's useful to repress...</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>...to repress and the violence that is, you know, maybe empirically there. But anyway...</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>I mean the risk is then you're accused of hypocrisy, right? But like... choice between hypocrisy and cynicism.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Yeah, exactly. Yeah, precisely, yeah.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>So Stalinism has like extremes on both sides of like radical cynicism and radical hypocrisy. Like it's really all bad faith, right? It's really... it's very, very, very dramatic.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Yeah, there is something bracing about its honesty or, you know, its laying bare of the nature of things. But also horrifying. Yeah.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Vertiginous.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block cameron">
+            <div class="speaker-name">Cameron Abadi</div>
+            <div class="text">
+                <p>Um, well, this brings our series on Soviet economic thinkers to a close. We're already talking about other potential series to introduce in the new year. But in the meantime, Happy New Year to everybody. And um, yeah, looking forward to the year ahead.</p>
+            </div>
+        </div>
+
+        <div class="speaker-block adam">
+            <div class="speaker-name">Adam Tooze</div>
+            <div class="text">
+                <p>Happy New Year.</p>
+            </div>
+        </div>
+
+        <hr>
+
+    </div>
+
+    <footer>
+        <p>Design inspired by Soviet Constructivism</p>
+        <p>Content &copy; Foreign Policy / Ones and Tooze</p>
+    </footer>
+
+    <script>
+        // Simple scroll progress bar script
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>
